@@ -12,7 +12,7 @@ import (
 	"user/domain/model"
 	"user/domain/service"
 	handler "user/handle"
-	user "user/proto"
+	"user/proto/user"
 )
 
 func main() {
@@ -55,7 +55,7 @@ func main() {
 	//创建服务实例
 	userDataService := service.NewUserDataService(model.NewUserRepository(db))
 	//注册Handler
-	err = user.RegisterUserServiceHandler(srv.Server(),&handler.User{UserDataService:userDataService})
+	err = user.RegisterUserServiceHandler(srv.Server(),&handler.User{UserDataService: userDataService})
 	if err != nil {
 		fmt.Println(err)
 	}
