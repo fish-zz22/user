@@ -1,0 +1,22 @@
+syntax = "proto3";  // 指定语法版本
+
+message User {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;  // 可选字段（proto3 需显式声明 optional）
+}
+
+service UserService {
+  rpc GetUser (UserRequest) returns (User);
+  rpc RegisterUser (RegistUserRequest) returns (User);
+}
+
+message UserRequest{
+  string name = 1;
+}
+
+message RegistUserRequest{
+  string name = 1;
+  int32  id = 2;
+  string password = 3;
+}
